@@ -33,4 +33,4 @@ Proyek ini dipilih karena:
 
 Proyek ini diharapkan dapat memberikan solusi yang efektif dan efisien dalam mengelola perpustakaan secara digital, dalam manajemen buku dan peminjaman, serta memberikan kemudahan dalam mengakses layanan perpustakaan.
 
-Link Repository Github Project : [https://github.com/yollow96/projek_kelompok_03.git]
+Link Repository Github Project : [https://github.com/yollow96/Smart-Library.git]
