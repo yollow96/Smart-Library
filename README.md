@@ -20,7 +20,9 @@ Tim Juri :
 2.	dan digunakan saat pengajuan seminar aplikasi
 
 Executive Summary : 
+
 Latar Belakang dan Masalah yang Ingin Diatasi:
+
 Sistem perpustakaan manual sering kali menghadapi berbagai tantangan, seperti kesulitan dalam mengelola data buku, memantau peminjaman dan pengembalian, serta menyimpan riwayat transaksi secara efisien. Proyek ini bertujuan untuk mengatasi masalah tersebut dengan mengembangkan aplikasi berbasis Java yang memungkinkan pengelolaan perpustakaan secara digital. Sistem ini diharapkan dapat membantu administrasi perpustakaan dalam mengelola koleksi buku serta memberikan kemudahan bagi anggota perpustakaan dalam melakukan peminjaman dan pengembalian buku.
 
 Fitur utama sistem ini meliputi manajemen pengguna dengan login dan signup, serta menyediakan peminjaman dan pengembalian ditambahi juga menambah buku dalam aplikasi tersebut dan menghapusnya, jika user melakukan peminjaman akan ada pengisian tanggal peminjaman dan aakan ada pop up dari aplikasi memperlihatkan tengat waktu pengembalian buku tersebut.
