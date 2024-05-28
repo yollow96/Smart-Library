@@ -8,23 +8,28 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.stage.Screen;
 import tesapp.config.Dbconnect;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class HistoryBorrowed {
     private ObservableList<BorrowHistory> borrowHistoryList = FXCollections.observableArrayList();
     private String borrower;
     private final App app;
+    private static final Logger logger = Logger.getLogger(HistoryBorrowed.class.getName());
 
     // Konstruktor untuk kelas HistoryBorrowed
     public HistoryBorrowed(App app) {
@@ -36,45 +41,56 @@ public class HistoryBorrowed {
     // Metode untuk membuat Scene riwayat peminjaman
     @SuppressWarnings("unchecked")
     public Scene createScene() {
-        // Membuat tabel untuk menampilkan riwayat peminjaman
         TableView<BorrowHistory> borrowHistoryTable = new TableView<>(borrowHistoryList);
-        borrowHistoryTable.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
-        borrowHistoryTable.setPrefWidth(600);
 
-        // Membuat kolom untuk peminjam
         TableColumn<BorrowHistory, String> borrowerColumn = new TableColumn<>("Peminjam");
         borrowerColumn.setCellValueFactory(new PropertyValueFactory<>("borrower"));
+        borrowerColumn.setPrefWidth(150);
 
-        // Membuat kolom untuk judul buku
         TableColumn<BorrowHistory, String> bookTitleColumn = new TableColumn<>("Nama Buku");
         bookTitleColumn.setCellValueFactory(new PropertyValueFactory<>("bookTitle"));
+        bookTitleColumn.setPrefWidth(250);
 
-        // Membuat kolom untuk tanggal peminjaman
         TableColumn<BorrowHistory, String> borrowDateColumn = new TableColumn<>("Tanggal Peminjaman");
         borrowDateColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getBorrowDate().format(DateTimeFormatter.ISO_DATE)));
+        borrowDateColumn.setPrefWidth(150);
 
-        // Membuat kolom untuk tanggal pengembalian
         TableColumn<BorrowHistory, String> dueDateColumn = new TableColumn<>("Tanggal Pengembalian");
         dueDateColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDueDate().format(DateTimeFormatter.ISO_DATE)));
+        dueDateColumn.setPrefWidth(150);
 
-        // Menambahkan semua kolom ke dalam tabel
         borrowHistoryTable.getColumns().addAll(borrowerColumn, bookTitleColumn, borrowDateColumn, dueDateColumn);
+        borrowHistoryTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        // Membuat root pane dengan VBox untuk tata letak
+        
+
         BorderPane root = new BorderPane();
-        VBox vbox = new VBox(10);
-        vbox.setPadding(new Insets(10));
+        VBox vbox = new VBox(15);
+        vbox.setPadding(new Insets(15));
         vbox.getChildren().addAll(borrowHistoryTable);
 
         // Membuat tombol kembali
         Button btnBack = new Button("Kembali");
+        btnBack.setId("btnBack"); // Mengatur ID untuk tombol
         btnBack.setOnAction((ActionEvent event) -> app.showAppScene());
 
         vbox.getChildren().add(btnBack);
 
         root.setCenter(vbox);
 
-        return new Scene(root, 800, 400);
+        // Set the background image for the VBox
+        String imagePath = getClass().getResource("/gambar/background3.jpg").toExternalForm();
+        BackgroundImage backgroundImage = new BackgroundImage(new Image(imagePath), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1, 1, true, true, false, false));
+        vbox.setBackground(new Background(backgroundImage));
+
+        // Mendapatkan ukuran layar penuh
+        double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
+        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
+
+        Scene scene = new Scene(root, screenWidth, screenHeight);
+        scene.getStylesheets().add(getClass().getResource("/style_history.css").toExternalForm()); // Apply CSS file
+        
+        return scene;
     }
 
     // Metode untuk menetapkan peminjam dan memperbarui riwayat peminjaman
@@ -103,9 +119,17 @@ public class HistoryBorrowed {
                 while (resultSet.next()) {
                     String borrowerName = resultSet.getString("borrower");
                     String bookTitle = resultSet.getString("book_title");
-                    LocalDate borrowDate = resultSet.getDate("borrow_date").toLocalDate();
-                    LocalDate dueDate = resultSet.getDate("due_date").toLocalDate();
-                    historyList.add(new BorrowHistory(borrowerName, bookTitle, borrowDate, dueDate));
+
+                    long borrowDateMillis = resultSet.getLong("borrow_date");
+                    long dueDateMillis = resultSet.getLong("due_date");
+
+                    LocalDate borrowLocalDate = Instant.ofEpochMilli(borrowDateMillis).atZone(ZoneId.systemDefault()).toLocalDate();
+                    LocalDate dueLocalDate = Instant.ofEpochMilli(dueDateMillis).atZone(ZoneId.systemDefault()).toLocalDate();
+
+                    logger.info("Retrieved: borrower=" + borrowerName + ", book_title=" + bookTitle +
+                            ", borrow_date=" + borrowLocalDate + ", due_date=" + dueLocalDate);
+
+                    historyList.add(new BorrowHistory(borrowerName, bookTitle, borrowLocalDate, dueLocalDate));
                 }
             }
         } catch (SQLException e) {

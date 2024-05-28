@@ -2,6 +2,7 @@ package tesapp.config;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +38,7 @@ public class Dbconnect {
             preparedStatement.setString(2, password);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 return resultSet.next();
+                
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -123,14 +125,14 @@ public class Dbconnect {
 
     // Fungsi untuk mengambil riwayat peminjaman
     public static List<BorrowHistory> fetchAllBorrowHistory(String borrower) {
-        String query = "SELECT * FROM book WHERE borrower = ?";
+        String query = "SELECT * FROM borrow_history";
         List<BorrowHistory> borrowHistoryList = new ArrayList<>();
-        try (Connection connection = connectBook();
+        try (Connection connection = connectBorrowHistory();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, borrower);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
-                    String bookTitle = resultSet.getString("title");
+                    String bookTitle = resultSet.getString("book_title");
                     LocalDate borrowDate = resultSet.getDate("borrow_date").toLocalDate();
                     LocalDate dueDate = resultSet.getDate("due_date").toLocalDate();
                     borrowHistoryList.add(new BorrowHistory(borrower, bookTitle, borrowDate, dueDate));
@@ -168,14 +170,13 @@ public class Dbconnect {
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, borrower);
             preparedStatement.setString(2, bookTitle);
-            preparedStatement.setString(3, borrowDate.toString());
-            preparedStatement.setString(4, dueDate.toString());
+            preparedStatement.setDate(3, Date.valueOf(LocalDate.parse(borrowDate, DateTimeFormatter.ISO_DATE)));
+            preparedStatement.setDate(4, Date.valueOf(LocalDate.parse(dueDate, DateTimeFormatter.ISO_DATE)));
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    
 }
-
-
