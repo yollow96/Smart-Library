@@ -24,9 +24,8 @@ Latar Belakang dan Masalah yang Ingin Diatasi:
 
 
 
+Fitur utama sistem ini meliputi manajemen pengguna dengan login dan signup, serta menyediakan peminjaman dan pengembalian ditambahi juga menambah buku dalam aplikasi tersebut dan menghapusnya, jika user melakukan peminjaman akan ada pengisian tanggal peminjaman dan akan ada pop up dari aplikasi memperlihatkan tengat waktu pengembalian buku tersebut.
 
-
-	Fitur utama sistem ini meliputi manajemen pengguna dengan login dan signup, serta menyediakan peminjaman dan pengembalian ditambahi juga menambah buku dalam aplikasi tersebut dan menghapusnya, jika user melakukan peminjaman akan ada pengisian tanggal peminjaman dan akan ada pop up dari aplikasi memperlihatkan tengat waktu pengembalian buku tersebut.
 
 Alasan Pemilihan Proyek
 Proyek ini dipilih karena:
