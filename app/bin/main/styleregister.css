@@ -1,0 +1,29 @@
+.register-button {
+    background-color: #28a745; /* Properti standar */
+    -fx-background-color: #28a745; /* JavaFX properti */
+    color: white; /* Properti standar */
+    -fx-text-fill: white; /* JavaFX properti */
+    font-size: 16px; /* Properti standar */
+    -fx-font-size: 16px; /* JavaFX properti */
+    padding: 15px 50px; /* Ganti ukuran padding */
+    -fx-padding: 15px 50px; /* JavaFX properti */
+    border-radius: 5px; /* Properti standar */
+    -fx-background-radius: 5; /* JavaFX properti */
+    -fx-border-radius: 5; /* JavaFX properti */
+    cursor: pointer; /* Properti standar */
+    -fx-cursor: hand; /* JavaFX properti */
+}
+
+.text-field, .password-field {
+    border-color: #0073e6; /* Properti standar */
+    -fx-border-color: #0073e6; /* JavaFX properti */
+    border-width: 2px; /* Properti standar */
+    -fx-border-width: 2px; /* JavaFX properti */
+    border-radius: 5px; /* Properti standar */
+    -fx-background-radius: 5; /* JavaFX properti */
+    -fx-border-radius: 5; /* JavaFX properti */
+    font-size: 14px; /* Properti standar */
+    -fx-font-size: 14px; /* JavaFX properti */
+    padding: 10px; /* Properti standar */
+    -fx-padding: 10px; /* JavaFX properti */
+}

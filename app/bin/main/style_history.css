@@ -1,0 +1,30 @@
+/* style_history.css */
+
+/* Tombol kembali */
+#btnBack {
+    background-color: #dc3545; /* Warna latar belakang */
+    -fx-background-color: #dc3545; /* JavaFX properti */
+    color: white; /* Warna teks */
+    -fx-text-fill: white; /* JavaFX properti */
+    font-size: 14px; /* Ukuran font */
+    -fx-font-size: 14px; /* JavaFX properti */
+    font-weight: bold; /* Ketebalan font */
+    -fx-font-weight: bold; /* JavaFX properti */
+    padding: 10px 20px; /* Padding tombol */
+    -fx-padding: 10px 20px; /* JavaFX properti */
+    border-radius: 5px; /* Border radius */
+    -fx-background-radius: 5px; /* JavaFX properti */
+    -fx-border-radius: 5px; /* JavaFX properti */
+}
+
+/* Hover untuk tombol kembali */
+#btnBack:hover {
+    background-color: #c82333; /* Warna latar belakang saat hover */
+    -fx-background-color: #c82333; /* JavaFX properti */
+}
+
+/* Tombol kembali saat ditekan */
+#btnBack:pressed {
+    background-color: #bd2130; /* Warna latar belakang saat ditekan */
+    -fx-background-color: #bd2130; /* JavaFX properti */
+}

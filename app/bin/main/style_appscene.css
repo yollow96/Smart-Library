@@ -1,0 +1,43 @@
+/* style_appscene.css */
+
+.button {
+    background-color: #0073e6;
+    -fx-background-color: #0073e6;
+    -fx-text-fill: white;
+    font-size: 14px;
+    -fx-font-size: 14px;
+    font-weight: bold;
+    -fx-font-weight: bold;
+    padding: 10px 20px;
+    -fx-padding: 10px 20px;
+    border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+
+
+.judul-field, .penulis-field, .text-field  {
+    border-color: #0073e6; /* Properti standar */
+    -fx-border-color: #0073e6; /* JavaFX properti */
+    border-width: 1px; /* Properti standar */
+    -fx-border-width: 1px; /* JavaFX properti */
+    border-radius: 5px; /* Properti standar */
+    -fx-background-radius: 5; /* JavaFX properti */
+    -fx-border-radius: 5; /* JavaFX properti */
+    font-size: 14px; /* Properti standar */
+    -fx-font-size: 14px; /* JavaFX properti */
+    padding: 10px; /* Properti standar */
+    -fx-padding: 10px; /* JavaFX properti */
+}
+
+.button:hover {
+    background-color: #0056b3;
+    -fx-background-color: #0056b3;
+}
+
+.button:pressed {
+    background-color: #004080;
+    -fx-background-color: #004080;
+}
+

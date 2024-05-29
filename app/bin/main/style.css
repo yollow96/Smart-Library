@@ -1,0 +1,75 @@
+/* styles.css */
+
+/* Style untuk tombol login */
+.login-button {
+    background-color: #0073e6; 
+    -fx-background-color: #0073e6;
+    color: white; 
+    -fx-text-fill: white;
+    font-size: 16px; 
+    -fx-font-size: 16px; 
+    padding: 16px 55px; 
+    -fx-padding: 16px 55px; 
+    border-radius: 5px; 
+    -fx-background-radius: 5; 
+    -fx-border-radius: 5; 
+    cursor: pointer; 
+    -fx-cursor: hand; 
+}
+
+.login-button:hover {
+    background-color: #005bb5; 
+    -fx-background-color: #005bb5; 
+}
+
+.login-button:pressed {
+    background-color: #003f7f; 
+    -fx-background-color: #003f7f; 
+}
+
+/* Style untuk tombol register */
+.register-button {
+    background-color: #28a745; 
+    -fx-background-color: #28a745; 
+    color: white; 
+    -fx-text-fill: white; 
+    font-size: 16px; 
+    -fx-font-size: 16px; 
+    padding: 15px 50px; /* Ganti ukuran padding */
+    -fx-padding: 15px 50px; 
+    border-radius: 5px; 
+    -fx-background-radius: 5; 
+    -fx-border-radius: 5; 
+    cursor: pointer;
+    -fx-cursor: hand; 
+}
+
+.register-button:hover {
+    background-color: #218838;
+    -fx-background-color: #218838; 
+}
+
+.register-button:pressed {
+    background-color: #1e7e34; 
+    -fx-background-color: #1e7e34; 
+}
+
+.btn-box {
+    -fx-spacing: 20px; 
+}
+
+/* Style untuk TextField dan PasswordField */
+.text-field, .password-field {
+    border-color: #0073e6; 
+    -fx-border-color: #0073e6; 
+    border-width: 2px; 
+    -fx-border-width: 2px; 
+    border-radius: 5px; 
+    -fx-background-radius: 5; 
+    -fx-border-radius: 5; 
+    font-size: 14px; 
+    -fx-font-size: 14px; 
+    padding: 10px; 
+    -fx-padding: 10px; 
+}
+
