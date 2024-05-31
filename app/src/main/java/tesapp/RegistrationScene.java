@@ -11,6 +11,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.StageStyle;
 import tesapp.config.Dbconnect;
@@ -70,13 +71,23 @@ public class RegistrationScene {
         Label titleLabel = new Label("Create New Account");
         titleLabel.setStyle("-fx-font-weight: bold; -fx-text-alignment: center;");
 
+       // Membuat tombol kembali
+        Button backButton = new Button("Back");
+        backButton.getStyleClass().add("back-button");
+        backButton.setOnAction(e -> {
+            app.showLoginScene();
+        });
+
+
+        HBox buttonBox = new HBox(10, registerButton,backButton);
+        buttonBox.setAlignment(Pos.CENTER);
         // Membuat VBox dan menambahkan elemen-elemen ke dalamnya
         VBox registerBox = new VBox(10);
         registerBox.getChildren().addAll(
                 titleLabel,
                 usernameField,
                 passwordField,
-                registerButton);
+                buttonBox);
         registerBox.setAlignment(Pos.CENTER);
 
         // Menambahkan VBox ke dalam root pane

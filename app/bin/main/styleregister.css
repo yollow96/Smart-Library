@@ -27,3 +27,29 @@
     padding: 10px; /* Properti standar */
     -fx-padding: 10px; /* JavaFX properti */
 }
+
+.back-button {
+    background-color: #0073e6; 
+    -fx-background-color: #0073e6;
+    color: white; 
+    -fx-text-fill: white;
+    font-size: 16px; 
+    -fx-font-size: 16px; 
+    padding: 16px 55px; 
+    -fx-padding: 16px 55px; 
+    border-radius: 5px; 
+    -fx-background-radius: 5; 
+    -fx-border-radius: 5; 
+    cursor: pointer; 
+    -fx-cursor: hand; 
+}
+
+.back-button:hover {
+    background-color: #005bb5; 
+    -fx-background-color: #005bb5; 
+}
+
+.back-button:pressed {
+    background-color: #003f7f; 
+    -fx-background-color: #003f7f; 
+}
