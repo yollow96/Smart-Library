@@ -61,6 +61,8 @@ public class HistoryBorrowed {
 
         borrowHistoryTable.getColumns().addAll(borrowerColumn, bookTitleColumn, borrowDateColumn, dueDateColumn);
         borrowHistoryTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        //Pesan tersebut menunjukkan bahwa TableView.CONSTRAINED_RESIZE_POLICY telah 
+        //tidak direkomendasikan untuk digunakan (deprecated) sejak versi JavaFX 20. 
 
         
 

@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -14,6 +15,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -226,15 +228,12 @@ public class AppScene {
         Book selectedBook = bookListView.getSelectionModel().getSelectedItem();
         if (selectedBook != null && !selectedBook.isBorrowed()) {
             TextInputDialog dialog = new TextInputDialog();
-            setBackground(dialog.getDialogPane(), "/gambar/alert.jpg");
             dialog.setTitle("Tanggal Peminjaman");
             dialog.setHeaderText("Masukkan tanggal peminjaman (Format: YYYY-MM-DD)");
             dialog.setContentText("Tanggal Peminjaman:");
 
-
-
             setBackground(dialog.getDialogPane(), "/gambar/alert.jpg");
-
+        
 
             Optional<String> result = dialog.showAndWait();
             if (result.isPresent()) {
@@ -277,6 +276,8 @@ public class AppScene {
         dialog.setHeaderText("Pilih buku yang ingin dikembalikan:");
 
         setBackground(dialog.getDialogPane(), "/gambar/alert.jpg");
+
+
 
         Optional<Book> result = dialog.showAndWait();
         result.ifPresent(book -> {
@@ -356,9 +357,27 @@ public class AppScene {
         alert.showAndWait();
     }
 
-    private void setBackground(DialogPane dialogPane, String imagePath) {
+    // Metode untuk menampilkan background
+    private void setBackground(Node node, String imagePath) {
+        // Memuat gambar
         Image image = new Image(getClass().getResource(imagePath).toExternalForm());
-        BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1, 1, true, true, false, false));
-        dialogPane.setBackground(new Background(backgroundImage));
+        // Membuat BackgroundImage menggunakan gambar
+        BackgroundImage backgroundImage = new BackgroundImage(image, 
+            BackgroundRepeat.NO_REPEAT, 
+            BackgroundRepeat.NO_REPEAT, 
+            BackgroundPosition.CENTER, 
+            new BackgroundSize(1, 1, true, true, false, false));
+        // Mengatur gambar latar belakang untuk node
+        if (node instanceof Region) {
+            ((Region) node).setBackground(new Background(backgroundImage));
+        }
+
+        // Mengatur latar belakang untuk header label jika ada
+        if (node instanceof DialogPane) {
+            Node header = ((DialogPane) node).lookup(".header-panel");
+            if (header instanceof Region) {
+                ((Region) header).setBackground(new Background(backgroundImage));
+            }
+        }
     }
 }
