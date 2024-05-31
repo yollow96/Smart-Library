@@ -63,7 +63,7 @@ public class LoginScene {
                 app.showAppScene();
             } else {
                 // Menampilkan pesan error jika login gagal
-                showAlert(Alert.AlertType.ERROR, "Login failed. Please check your credentials.");
+                showAlert(Alert.AlertType.ERROR, "Login gagal." +  "\nSilahkan Cek Username dan Password.");
             }
         });
         loginButton.getStyleClass().add("login-button");

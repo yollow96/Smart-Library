@@ -54,16 +54,16 @@ public class RegistrationScene {
             if (!username.isEmpty() && !password.isEmpty()) {
                 if (Dbconnect.registerUser(username, password)) {
                     // Menampilkan pesan sukses jika registrasi berhasil
-                    showAlert(Alert.AlertType.INFORMATION, "Registration successful. Please login with your new account.");
+                    showAlert(Alert.AlertType.INFORMATION, "Registration successful. Silahkan Login dengan akun anda.");
                     // Menampilkan scene login
                     app.showLoginScene();
                 } else {
                     // Menampilkan pesan error jika registrasi gagal
-                    showAlert(Alert.AlertType.ERROR, "Registration failed. Please try again.");
+                    showAlert(Alert.AlertType.ERROR, "Registration failed. Silahkan coba lagi.");
                 }
             } else {
                 // Menampilkan pesan peringatan jika field kosong
-                showAlert(Alert.AlertType.WARNING, "Please enter a valid username and password.");
+                showAlert(Alert.AlertType.WARNING, "Tolong isi username dan password.");
             }
         });
 

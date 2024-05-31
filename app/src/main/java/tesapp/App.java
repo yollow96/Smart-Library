@@ -49,10 +49,6 @@ public class App extends Application {
         availableBooks.addAll(Dbconnect.getAvailableBooks());
     }
 
-    // // Metode untuk mengautentikasi pengguna
-    // public boolean authenticateUser(String username, String password) {
-    //     return userCredentials.containsKey(username) && userCredentials.get(username).equals(password);
-    // }
 
     // Metode untuk mendaftarkan pengguna baru
     public void registerUser(String username, String password) {
